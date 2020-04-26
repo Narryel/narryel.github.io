@@ -1,1 +1,0 @@
-# narryel.github.io
