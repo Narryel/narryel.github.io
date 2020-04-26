@@ -1,0 +1,16 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Monospace', monospace;
+}
+
+
+img { border-radius: 50%}
+
+.avatar {
+    height: 400px;
+    width: 300px;
+}
