@@ -16,6 +16,7 @@ window.onclick = function (event) {
 
 
 
+
 function fillPdfContent() {
     let pdfContent = {
         content: [],
@@ -23,9 +24,9 @@ function fillPdfContent() {
     }
     pdfContent.content.push(metaPdfContent)
 
-
-    fillBioContent(pdfContent.content);
+    fillEduContent(pdfContent.content)
     fillJobsContent(pdfContent.content);
+    fillBioContent(pdfContent.content);
 
     // let photoCbValue = document.getElementById("photoCb").value;
     // if (photoCbValue) {
@@ -49,23 +50,21 @@ function fillPdfContent() {
 
 }
 
-function fillBioContent(content) {
-    let bioCbValue =  document.getElementById('bioCb').checked;
-    if (bioCbValue!==true) return
+function fillEduContent(content) {
+    let eduCbValue = document.getElementById('eduCb').checked;
+    if (eduCbValue !== true) return
 
     content.push({
-        text: 'Биография и образование',
+        text: 'Образование',
         style: STYLENAMES.PARAGRAPH_NAME
     })
 
     content.push(
         {
-            text: cvData.bio
+            text: cvData.education
         }
     )
-
 }
-
 
 function fillJobsContent(content) {
     content.push({
@@ -92,7 +91,7 @@ function fillJobsContent(content) {
         case 'dev': {
             //fixme не оптимально
             let devJobs = cvData.jobs.filter(function (elem) {
-                return elem.asDeveloper===true
+                return elem.asDeveloper === true
             })
             devJobs.forEach(function (element, index, array) {
                 jobArray.push(formatJobInfo(element))
@@ -106,6 +105,25 @@ function fillJobsContent(content) {
     })
 
 }
+
+function fillBioContent(content) {
+    let bioCbValue = document.getElementById('bioCb').checked;
+    if (bioCbValue !== true) return
+
+    content.push({
+        text: 'Биография',
+        style: STYLENAMES.PARAGRAPH_NAME
+    })
+
+    content.push(
+        {
+            text: cvData.bio
+        }
+    )
+
+}
+
+
 
 function formatJobInfo(jobData) {
     return [
@@ -126,6 +144,10 @@ function formatJobInfo(jobData) {
         {
             text: 'Задачи: ' + jobData.responsibilities.join(' , '),
         },
+        {
+            text: 'Сайт компании: ' + jobData.companySite,
+        },
+        "\n"
 
     ]
 }
@@ -138,85 +160,4 @@ function makePDF() {
 function openPDF() {
     let pdfContent = fillPdfContent();
     pdfMake.createPdf(pdfContent).open();
-}
-
-
-let dd = {
-    content: [
-        {
-            stack: [
-                cvData.credentials,
-                {text: 'This is a subheader', style: 'subheader'},
-            ],
-            style: STYLENAMES.HEADER
-        },
-        {
-            text: [
-                'Margins have slightly different behavior than other layout properties. They are not inherited, unlike anything else. They\'re applied only to those nodes which explicitly ',
-                'set margin or style property.\n',
-            ]
-        },
-        {
-            text: 'This paragraph (consisting of a single line) directly sets top and bottom margin to 20',
-            margin: [0, 20],
-        },
-        {
-            stack: [
-                {
-                    text: [
-                        'This line begins a stack of paragraphs. The whole stack uses a ',
-                        {text: 'superMargin', italics: true},
-                        ' style (with margin and fontSize properties).',
-                    ]
-                },
-                {
-                    text: ['When you look at the', {
-                        text: ' document definition',
-                        italics: true
-                    }, ', you will notice that fontSize is inherited by all paragraphs inside the stack.']
-                },
-                'Margin however is only applied once (to the whole stack).'
-            ],
-            style: 'superMargin'
-        },
-        {
-            stack: [
-                'I\'m not sure yet if this is the desired behavior. I find it a better approach however. One thing to be considered in the future is an explicit layout property called inheritMargin which could opt-in the inheritance.\n\n',
-                {
-                    fontSize: 15,
-                    text: [
-                        'Currently margins for ',
-                        /* the following margin definition doesn't change anything */
-                        {text: 'inlines', margin: 20},
-                        ' are ignored\n\n'
-                    ],
-                },
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.\n',
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.\n',
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.\n',
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.\n',
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.\n',
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.\n',
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.\n',
-            ],
-            margin: [0, 20, 0, 0],
-            alignment: 'justify'
-        }
-    ],
-    styles: {
-        header: {
-            fontSize: 18,
-            bold: true,
-            alignment: 'right',
-            margin: [0, 190, 0, 80]
-        },
-        subheader: {
-            fontSize: 14
-        },
-        superMargin: {
-            margin: [20, 0, 40, 0],
-            fontSize: 15
-        }
-    }
-
 }

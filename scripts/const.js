@@ -1,3 +1,11 @@
+const STYLENAMES = {
+    PARAGRAPH_NAME: 'paragraphStart',
+    HEADER: 'header',
+    SUBHEADER: 'subheader',
+    H2: 'subheader2',
+    SMALL_GRAY: 'smallGray'
+}
+
 const cvData = {
     name: "Валентин",
     surname: "Афанасьев",
@@ -11,15 +19,24 @@ const cvData = {
     profession: "Java developer",
     offspec: "Kotlin developer",
     grade: "middle",
+    education: [
+        {
+            text: "Бакалавриат:", bold: true
+        },
+        " Уральский Федеральный Университет (УрФУ). Радиотехнический факультет. Телекоммуникации и средства связи. \n ",
+        {
+            text: "Магистратура:", bold: true
+        },
+        " Уральский Федеральный Университет (УрФу). Радиотехнический факультет. Инфокоммуникационные технологии. \n"
+    ],
     jobs: [
         {
-            order: 0,
             asDeveloper: true,
             from: "декабря 2019",
             to: "текущее время",
             //todo dynamic
             duration: "6 месяцев",
-            position: "Backend разработчик",
+            position: "Backend-разработчик",
             companyName: "ООО Кометрика",
             companySite: "https://cometrica.ru/",
             pitch: "Продуктовая и заказная разработка проектов на основе блокчейн",
@@ -27,27 +44,25 @@ const cvData = {
             responsibilities: ["new feature developing", "refactoring", "code review", "mentoring"]
         },
         {
-            order: 1,
             asDeveloper: true,
             from: "октября 2018",
             to: "ноябрь 2019",
             duration: "1 год 3 месяца",
             position: "Старший инженер по разработке (fullstack dev)",
             companyName: "ПАО Сбербанк",
-            companySite: "https://www.sberbank.ru/",
+            companySite: "https://sberbank.ru/",
             pitch: "Разработка высоконагруженных веб-приложений для внутреннего пользования (инхаус)",
             stack: ["Java 7", "Java EE", "DB2", "IBM WebSphere", "jUnit4", "IBM MQ"],
             responsibilities: ["new feature developing", "refactoring", "unit tests"]
         },
         {
-            order: 2,
             asDeveloper: false,
             from: "августа 2016",
             to: "сентябрь 2018",
             duration: "2 года 2 месяца",
             position: "Ведущий инженер по сопровождению",
             companyName: "ПАО Сбербанк",
-            companySite: "https://www.sberbank.ru/",
+            companySite: "https://sberbank.ru/",
             pitch: "Администрирование крупной внутренней АС (вторая линия поддержки)",
             stack: ["Java 7", "Java EE", "Oracle", "IBM WebSphere", "IBM MQ"],
             responsibilities: ["работа со сложными обращениями", "инцидент-менеджмент", "тестирование", "внедрение и тиражирование ПО", "ведение документации"]
@@ -64,7 +79,7 @@ const cvData = {
             text: "Уральского Федерального Университета (УрФУ) по программе Телекоммуникации и Средства Связи (Радиотехнический факультет). ",
             italics: true
         },
-        "Поступил на магистратуру той же специальности и начал параллельно работать в продажах телекома (проектный менеджмент). После защиты диссертации магистра " +
+        "Поступил на магистратуру той же специальности и начал параллельно работать в продажах телекома (проектный менеджмент). После защиты диссертации магистра ",
         {
             text: "устроился на первую работу в IT в ПАО Сбербанк в группу администрирования фронтальной АС ",
             italics: true
@@ -77,7 +92,7 @@ const cvData = {
         },
         "Выполнял задачи по доработке высоконагруженной системы и на бэк и на фронте.",
         {
-            text: "Прошел курсы по стэку JAVA- \"OTUS.RU - Разработчик Java\" и \"LUXOFT.COM - Spring Framework\". \n",
+            text: " Прошел курсы по JVM-стеку: \"OTUS.RU - Разработчик Java\" и \"LUXOFT.COM - Spring Framework\". \n",
             italics: true
         },
         " Позднее перешел в компанию Кометрика (г. Москва) в качестве backend-разработчика, где и работаю по текущий день"
@@ -90,11 +105,11 @@ const cvData = {
 const metaPdfContent = [
     {
         text: 'Валентин Афанасьев',
-        style: 'header'
+        style: STYLENAMES.HEADER
     },
     {
         text: 'Java & Kotlin developer',
-        style: 'subheader'
+        style: STYLENAMES.SUBHEADER
     },
     '27 лет',
     '+7-912-237-00-27',
@@ -103,20 +118,14 @@ const metaPdfContent = [
 
 ]
 
-const STYLENAMES = {
-    PARAGRAPH_NAME: 'paragraphStart',
-    HEADER: 'header',
-    SUBHEADER: 'subheader',
-    H2: 'subheader2',
-    SMALL_GRAY: 'smallGray'
-}
+
 
 const pdfStyles = {
     header: {
         fontSize: 22,
         bold: false,
         alignment: 'left',
-        margin: [0, 90, 0, 0]
+        margin: [0, 60, 0, 0]
     },
     subheader: {
         fontSize: 18,
