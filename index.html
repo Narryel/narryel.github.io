@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Narryel</title>
 </head>
+
 <link rel="stylesheet" type="text/css" href="style.css">
 <body>
 <div>
@@ -11,13 +12,59 @@
 
     <div>
         <span style="display: block"> Привет! Меня зовут Афанасьев Валентин. </span>
-        <span style="display: block"> Я - Java-Developer </span>
+        <span style="display: block"> Я - Java/Kotlin-Developer </span>
     </div>
     <div>
-        <img class="avatar" src="https://lh3.google.com/u/0/d/1CQGF1RBtrwxqYeH3WHYZ2GpV7uAxjhO_=w3360-h1740-iv1">
+<!--        <img class="avatar" src="https://lh3.google.com/u/0/d/1CQGF1RBtrwxqYeH3WHYZ2GpV7uAxjhO_=w3360-h1740-iv1">-->
+    </div>
+</div>
+
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Экспорт в PDF</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Что включить в PDF?</p>
+        <ul class="">
+<!--            <li><label><input type="checkbox" id="bioCb" value=true checked><span>Биография и образование</span></label></li>-->
+
+            <!--            // TODO -->
+<!--            <li><label><input type="checkbox" id="photoCb" value=true checked><span>Фото</span></label></li>-->
+            <li>
+                <div>
+                    <label style="display: block"><input type="radio" name="job" value="all" checked><span>Весь опыт работы</span></label>
+                    <label style="display: block"><input type="radio" name="job" value="dev"><span>Только опыт работы разработчиком</span></label>
+                    <label style="display: block"><input type="radio" name="job" value="last"><span>Только последнее место работы</span></label>
+                </div>
+            </li>
+<!--            <li><label><input type="checkbox" id="hobbyCb" value=true checked><span>Хобби</span></label></li>-->
+<!--            <li><label><input type="checkbox" id="sportCb" value=true checked><span>Спорт</span></label></li>-->
+<!--            <li><label><input type="checkbox" id="pitchCb" value=true checked><span>Обо мне</span></label></li>-->
+        </ul>
+        <div>
+            <button id="generatePdfBtn" onclick=makePDF()>Сохранить</button>
+            <button id="openPdfBtn" onclick=openPDF()>Открыть в новом окне</button>
+        </div>
     </div>
 </div>
 
 
 </body>
+<!--jsPDF-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+        integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+        crossorigin="anonymous"></script>
+<!--PDF make-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/pdfmake.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/vfs_fonts.js'></script>
+
+<script src="scripts/const.js"></script>
+<script src="scripts/main.js"></script>
 </html>
+
+<!--http://preview.themeforest.net/item/desmond-resume-cv-html-template/full_screen_preview/15956797?_ga=2.53216044.588136194.1587925951-1221512389.1587925951-->
