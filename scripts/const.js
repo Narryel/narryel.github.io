@@ -13,11 +13,14 @@ const cvData = {
     credentials: "Афанасьев В.",
     birthDay: "14-12-1992",
     age: 27,
+    currentCity: 'Moscow',
+    currentCityRus: 'Москва',
     phoneNum: '+7-912-237-00-27',
     mainEmail: 'narryel@gmail.com',
-    cite: 'narryel.github.io',
+    site: 'narryel.github.io',
     profession: "Java developer",
     offspec: "Kotlin developer",
+    multiSpec: "Java & Kotlin developer",
     grade: "middle",
     education: [
         {
@@ -70,9 +73,15 @@ const cvData = {
 
 
     ],
-    hobbies: [],
-    sport: [],
-    aboutMe: "",
+    hobbiesAndSport: [
+        "Хобби у меня достаточно много, основные поедающие время и деньги сейчас – это сноуборд и страйкбол.\n",
+        "Ещё люблю собирать мини-коллекции и в этом году удалось посетить 3 разных страны. \n",
+        "Нравится заниматься спортом - фитнес и плавание, умею играть в настольный теннис и футбол (и чуточку во все остальные спортивные игры)."
+    ],
+    aboutMe: [
+        "Своей сильной стороной считаю умение находить общий язык с людьми. Во время дискуссий стараюсь понять \"другую сторону\" \n",
+        "Стараюсь развиваться во многих областях, немножко перфекционист :) \n"
+    ],
     bio: [
         "Родился и до 25ти лет прожил в городе Екатеринбурге. Успешно окончил бакалавриат ",
         {
@@ -104,20 +113,20 @@ const cvData = {
 
 const metaPdfContent = [
     {
-        text: 'Валентин Афанасьев',
+        text: cvData.name+ ' ' + cvData.surname,
         style: STYLENAMES.HEADER
     },
     {
-        text: 'Java & Kotlin developer',
+        text: cvData.multiSpec,
         style: STYLENAMES.SUBHEADER
     },
-    '27 лет',
-    '+7-912-237-00-27',
-    'narryel@gmail.com',
-    'https://narryel.github.io'
+    cvData.age + ' лет',
+    cvData.currentCity,
+    cvData.phoneNum,
+    cvData.mainEmail,
+    cvData.site
 
 ]
-
 
 
 const pdfStyles = {
