@@ -15,35 +15,43 @@ window.onclick = function (event) {
 }
 
 
+function fillMetaContent(content) {
 
+    let photoCbValue = document.getElementById('photoCb').checked;
+    if (photoCbValue !== true) {
+
+        content.push(metaPdfContent)
+        return
+    }
+
+    let columnBio = {
+        columns: [
+            metaPdfContent,
+            {
+                image: circleAva,
+                fit:[175,175],
+                margin: [40, 40, 0, 0]
+
+            }
+        ]
+    }
+    content.push(columnBio)
+}
 
 function fillPdfContent() {
     let pdfContent = {
         content: [],
         styles: pdfStyles
     }
-    pdfContent.content.push(metaPdfContent)
 
+
+    fillMetaContent(pdfContent.content)
     fillEduContent(pdfContent.content)
-    fillJobsContent(pdfContent.content);
-    fillBioContent(pdfContent.content);
+    fillJobsContent(pdfContent.content)
+    fillBioContent(pdfContent.content)
+    fillHobbyContent(pdfContent.content)
+    fillPitchContent(pdfContent.content)
 
-    // let photoCbValue = document.getElementById("photoCb").value;
-    // if (photoCbValue) {
-    //     let columnBio = {
-    //         columns: [
-    //             {
-    //                 text: 'Валентин Афанасьев',
-    //                 style: 'header'
-    //             },
-    //             {
-    //                 image: '',
-    //                 width: 300
-    //             }
-    //         ]
-    //     }
-    //     pdfContent.content.push(columnBio)
-    // }
 
     return pdfContent
 
@@ -123,6 +131,22 @@ function fillBioContent(content) {
 
 }
 
+function fillHobbyContent(content) {
+    let hobbyAndSportCbValue = document.getElementById('hobbyAndSportCb').checked;
+    if (hobbyAndSportCbValue !== true) return
+
+    content.push({
+        text: 'Хобби',
+        style: STYLENAMES.PARAGRAPH_NAME
+    })
+
+    content.push(
+        {
+            text: cvData.hobbiesAndSport
+        }
+    )
+
+}
 
 
 function formatJobInfo(jobData) {
@@ -150,6 +174,24 @@ function formatJobInfo(jobData) {
         "\n"
 
     ]
+}
+
+function fillPitchContent(content) {
+    let pitchCbValue = document.getElementById('pitchCb').checked;
+    if (pitchCbValue !== true) return
+
+    content.push({
+        text: 'Обо мне',
+        style: STYLENAMES.PARAGRAPH_NAME
+    })
+
+    content.push(
+        {
+            text: cvData.aboutMe
+        }
+    )
+
+
 }
 
 function makePDF() {
