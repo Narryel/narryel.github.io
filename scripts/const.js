@@ -5,6 +5,9 @@ const cvData = {
     credentials: "Афанасьев В.",
     birthDay: "14-12-1992",
     age: 27,
+    phoneNum: '+7-912-237-00-27',
+    mainEmail: 'narryel@gmail.com',
+    cite: 'narryel.github.io',
     profession: "Java developer",
     offspec: "Kotlin developer",
     grade: "middle",
@@ -54,7 +57,31 @@ const cvData = {
     ],
     hobbies: [],
     sport: [],
-    aboutMe: ""
+    aboutMe: "",
+    bio: [
+        "Родился и до 25ти лет прожил в городе Екатеринбурге. Успешно окончил бакалавриат ",
+        {
+            text: "Уральского Федерального Университета (УрФУ) по программе Телекоммуникации и Средства Связи (Радиотехнический факультет). ",
+            italics: true
+        },
+        "Поступил на магистратуру той же специальности и начал параллельно работать в продажах телекома (проектный менеджмент). После защиты диссертации магистра " +
+        {
+            text: "устроился на первую работу в IT в ПАО Сбербанк в группу администрирования фронтальной АС ",
+            italics: true
+        },
+        "(основные задачи можно посмотреть в графе \'Опыт работы\'). \n",
+        " Проработав два года, понял, что мне хочется более глубоко разбираться в своем продукте и ",
+        {
+            text: "перевелся в управление Казначейства ПАО Сбербанка (г. Санкт-Петербург) уже в должности разработчика. \n",
+            italics: true
+        },
+        "Выполнял задачи по доработке высоконагруженной системы и на бэк и на фронте.",
+        {
+            text: "Прошел курсы по стэку JAVA- \"OTUS.RU - Разработчик Java\" и \"LUXOFT.COM - Spring Framework\". \n",
+            italics: true
+        },
+        " Позднее перешел в компанию Кометрика (г. Москва) в качестве backend-разработчика, где и работаю по текущий день"
+    ]
 
 
 }
@@ -72,6 +99,48 @@ const metaPdfContent = [
     '27 лет',
     '+7-912-237-00-27',
     'narryel@gmail.com',
-    'narryel.github.io'
+    'https://narryel.github.io'
 
 ]
+
+const STYLENAMES = {
+    PARAGRAPH_NAME: 'paragraphStart',
+    HEADER: 'header',
+    SUBHEADER: 'subheader',
+    H2: 'subheader2',
+    SMALL_GRAY: 'smallGray'
+}
+
+const pdfStyles = {
+    header: {
+        fontSize: 22,
+        bold: false,
+        alignment: 'left',
+        margin: [0, 90, 0, 0]
+    },
+    subheader: {
+        fontSize: 18,
+        margin: [0, 0, 0, 0]
+
+    },
+    subheader2: {
+        fontSize: 16,
+        margin: [0, 0, 0, 0]
+
+    },
+    superMargin: {
+        margin: [20, 0, 40, 0],
+        fontSize: 15
+    },
+    smallGray: {
+        fontSize: 12,
+        italics: true,
+        color: '#8e8e8e'
+    },
+    paragraphStart: {
+        fontSize: 18,
+        bold: true,
+        margin: [0, 10, 0, 10]
+    }
+
+}
