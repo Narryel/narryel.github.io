@@ -15,41 +15,18 @@ window.onclick = function (event) {
 }
 
 
+
 function fillPdfContent() {
     let pdfContent = {
         content: [],
-        styles: {
-            header: {
-                fontSize: 22,
-                bold: false,
-                alignment: 'left',
-                margin: [0, 90, 0, 0]
-            },
-            subheader: {
-                fontSize: 18,
-                margin: [0, 0, 0, 0]
-
-            },
-            subheader2: {
-                fontSize: 16,
-                margin: [0, 0, 0, 0]
-
-            },
-            superMargin: {
-                margin: [20, 0, 40, 0],
-                fontSize: 15
-            },
-            smallGray: {
-                fontSize: 12,
-                italics: true,
-                color: '#8e8e8e'
-            }
-        }
+        styles: pdfStyles
     }
     pdfContent.content.push(metaPdfContent)
 
 
+    fillBioContent(pdfContent.content);
     fillJobsContent(pdfContent.content);
+
     // let photoCbValue = document.getElementById("photoCb").value;
     // if (photoCbValue) {
     //     let columnBio = {
@@ -72,11 +49,28 @@ function fillPdfContent() {
 
 }
 
+function fillBioContent(content) {
+    let bioCbValue =  document.getElementById('bioCb').checked;
+    if (bioCbValue!==true) return
+
+    content.push({
+        text: 'Биография и образование',
+        style: STYLENAMES.PARAGRAPH_NAME
+    })
+
+    content.push(
+        {
+            text: cvData.bio
+        }
+    )
+
+}
+
 
 function fillJobsContent(content) {
     content.push({
         text: 'Опыт работы',
-        style: 'subheader'
+        style: STYLENAMES.PARAGRAPH_NAME
     })
 
     let jobRadioValue = document.querySelector('input[name="job"]:checked').value;
@@ -117,14 +111,14 @@ function formatJobInfo(jobData) {
     return [
         {
             text: jobData.position + ' в компании ' + jobData.companyName,
-            style: 'subheader2'
+            style: STYLENAMES.H2
         },
         {
             text: jobData.pitch, italics: true
         },
         {
             text: 'c ' + jobData.from + ' по ' + jobData.to + ' (' + jobData.duration + ') \n',
-            style: 'smallGray'
+            style: STYLENAMES.SMALL_GRAY
         },
         {
             text: 'Стек: ' + jobData.stack.join(' , '),
@@ -154,7 +148,7 @@ let dd = {
                 cvData.credentials,
                 {text: 'This is a subheader', style: 'subheader'},
             ],
-            style: 'header'
+            style: STYLENAMES.HEADER
         },
         {
             text: [
