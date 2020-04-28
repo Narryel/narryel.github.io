@@ -158,7 +158,7 @@ const pdfStyles = {
     paragraphStart: {
         fontSize: 18,
         bold: true,
-        margin: [0, 10, 0, 10]
+        margin: [0, 20, 0, 10]
     }
 
 }
