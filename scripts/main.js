@@ -1,4 +1,4 @@
-// Modal window (generatte PDF)
+// Modal window (generate PDF)
 let modal = document.getElementById("myModal");
 let btn = document.getElementById("myBtn");
 let span = document.getElementsByClassName("close")[0];
@@ -14,6 +14,12 @@ window.onclick = function (event) {
     }
 }
 
+//heroku bot health check with cors workaround
+setInterval(function () {
+        axios.get('https://cors-anywhere.herokuapp.com/https://narryel-fit.herokuapp.com/health')
+            .then(response => (console.log(response)));
+    }, 10000
+)
 
 function fillMetaContent(content) {
 
@@ -29,7 +35,7 @@ function fillMetaContent(content) {
             metaPdfContent,
             {
                 image: circleAva,
-                fit:[175,175],
+                fit: [175, 175],
                 margin: [40, 40, 0, 0]
 
             }
