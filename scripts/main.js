@@ -18,7 +18,7 @@ window.onclick = function (event) {
 setInterval(function () {
         axios.get('https://cors-anywhere.herokuapp.com/https://narryel-fit.herokuapp.com/health')
             .then(response => (console.log(response)));
-    }, 10000
+    }, 60000
 )
 
 function fillMetaContent(content) {
