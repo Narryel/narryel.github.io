@@ -14,13 +14,6 @@ window.onclick = function (event) {
     }
 }
 
-//heroku bot health check with cors workaround
-setInterval(function () {
-        axios.get('https://cors-anywhere.herokuapp.com/https://narryel-fit.herokuapp.com/health')
-            .then(response => (console.log(response)));
-    }, 60000
-)
-
 function fillMetaContent(content) {
 
     let photoCbValue = document.getElementById('photoCb').checked;
