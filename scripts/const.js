@@ -18,6 +18,7 @@ const cvData = {
     phoneNum: '+7-912-237-00-27',
     mainEmail: 'narryel@gmail.com',
     site: 'narryel.github.io',
+    github: 'https://github.com/Narryel',
     profession: "Java developer",
     offspec: "Kotlin developer",
     multiSpec: "Java & Kotlin developer",
