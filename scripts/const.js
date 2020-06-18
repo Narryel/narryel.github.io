@@ -125,7 +125,8 @@ const metaPdfContent = [
     cvData.currentCity,
     cvData.phoneNum,
     cvData.mainEmail,
-    cvData.site
+    cvData.site,
+    cvData.github
 
 ]
 
