@@ -37,9 +37,8 @@ const cvData = {
         {
             asDeveloper: true,
             from: "декабря 2019",
-            dateFrom: new Date(2019, 12, 12),
+            dateFrom: new Date(2019, 11, 12),
             to: "текущее время",
-            duration: calculateDifferenceOfDateToNow(this.dateFrom),
             position: "Backend-разработчик",
             companyName: "ООО Кометрика",
             companySite: "https://cometrica.ru/",
@@ -50,6 +49,7 @@ const cvData = {
         {
             asDeveloper: true,
             from: "октября 2018",
+            dateFrom: new Date(2019, 9, 5),
             to: "ноябрь 2019",
             duration: "1 год 3 месяца",
             position: "Старший инженер по разработке (fullstack dev)",
@@ -62,6 +62,7 @@ const cvData = {
         {
             asDeveloper: false,
             from: "августа 2016",
+            dateFrom: new Date(2016, 7, 16),
             to: "сентябрь 2018",
             duration: "2 года 2 месяца",
             position: "Ведущий инженер по сопровождению",
@@ -163,14 +164,4 @@ const pdfStyles = {
         margin: [0, 20, 0, 10]
     }
 
-}
-
-function calculateDifferenceOfDateToNow(date) {
-    let diff = (Date.now() - date)
-    //todo добавить лет
-    if (diff.getUTCFullYear() - 1970 <= 0) {
-        return diff.getUTCMonth() + " месяцев"
-    } else {
-        return (diff.getUTCFullYear() - 1970) + " года " + diff.getUTCMonth() + " месяцев"
-    }
 }
