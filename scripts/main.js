@@ -209,7 +209,7 @@ function calculateDifferenceOfDateToNow(dateFrom, dateTo) {
     let yearDiff = dateDiff.getUTCFullYear() - 1970
 
     let returnString = ""
-    if (yearDiff <= 0) {
+    if (yearDiff > 0) {
         returnString += yearDiff + getYearLiteral(yearDiff)
     }
     return returnString + (dateDiff.getUTCMonth() + 1) + getMonthLiteral(dateDiff.getUTCMonth())
