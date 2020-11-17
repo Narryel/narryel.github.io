@@ -207,14 +207,13 @@ function openPDF() {
 function calculateDifferenceOfDateToNow(dateFrom, dateTo) {
     let dateDiff = new Date(dateTo - dateFrom)
     let yearDiff = dateDiff.getUTCFullYear() - 1970
-    let yearDiffLiteral = getYearLiteral(yearDiff)
 
-
+    let returnString = ""
     if (yearDiff <= 0) {
-        return "" + dateDiff.getUTCMonth() + getMonthLiteral(dateDiff.getUTCMonth())
-    } else {
-        return "" + yearDiff + yearDiffLiteral + dateDiff.getUTCMonth() + getMonthLiteral(dateDiff.getUTCMonth())
+        returnString += yearDiff + getYearLiteral(yearDiff)
     }
+    return returnString + (dateDiff.getUTCMonth() + 1) + getMonthLiteral(dateDiff.getUTCMonth())
+
 }
 
 function getYearLiteral(yearDifference) {
