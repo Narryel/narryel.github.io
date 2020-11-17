@@ -52,7 +52,7 @@ const cvData = {
             from: "октября 2018",
             dateFrom: new Date(2018, 9, 5),
             to: "ноябрь 2019",
-            dateTo: new Date(2019, 9, 30),
+            dateTo: new Date(2019, 10, 30),
             duration: "1 год 3 месяца",
             position: "Старший инженер по разработке (fullstack dev)",
             companyName: "ПАО Сбербанк",
