@@ -158,7 +158,7 @@ function formatJobInfo(jobData) {
             text: jobData.pitch, italics: true
         },
         {
-            text: 'c ' + jobData.from + ' по ' + jobData.to + ' (' + jobData.duration + ') \n',
+            text: 'c ' + jobData.from + ' по ' + jobData.to + ' (' + calculateDifferenceOfDateToNow(jobData.dateFrom) + ') \n',
             style: STYLENAMES.SMALL_GRAY
         },
         {
@@ -201,4 +201,28 @@ function makePDF() {
 function openPDF() {
     let pdfContent = fillPdfContent();
     pdfMake.createPdf(pdfContent).open();
+}
+
+
+function calculateDifferenceOfDateToNow(date) {
+    let dateDiff = (Date.now() - date)
+    let yearDiff = dateDiff.getUTCFullYear()
+    let yearDiffLiteral = getYearLiteral(yearDiff)
+
+
+    if (yearDiff - 1970 <= 0) {
+        return dateDiff.getUTCMonth() + " месяцев"
+    } else {
+        return (dateDiff.getUTCFullYear() - 1970) + yearDiffLiteral + dateDiff.getUTCMonth() + " месяцев"
+    }
+}
+
+function getYearLiteral(yearDifference) {
+    if (yearDifference - 1970 === 1) {
+        return " год "
+    } else if (yearDifference - 1970 > 1 && yearDifference < 4) {
+        return " года "
+    } else {
+        return " лет "
+    }
 }
