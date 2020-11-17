@@ -212,7 +212,7 @@ function calculateDifferenceOfDateToNow(dateFrom, dateTo) {
     if (yearDiff > 0) {
         returnString += yearDiff + getYearLiteral(yearDiff)
     }
-    return returnString + (dateDiff.getUTCMonth() + 1) + getMonthLiteral(dateDiff.getUTCMonth())
+    return returnString + (dateDiff.getUTCMonth()) + getMonthLiteral(dateDiff.getUTCMonth())
 
 }
 
