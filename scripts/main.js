@@ -205,7 +205,7 @@ function openPDF() {
 
 
 function calculateDifferenceOfDateToNow(date) {
-    let dateDiff = (Date.now() - date)
+    let dateDiff = new Date(Date.now() - date)
     let yearDiff = dateDiff.getUTCFullYear()
     let yearDiffLiteral = getYearLiteral(yearDiff)
 
