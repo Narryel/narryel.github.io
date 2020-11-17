@@ -206,21 +206,21 @@ function openPDF() {
 
 function calculateDifferenceOfDateToNow(dateFrom, dateTo) {
     let dateDiff = new Date(dateTo - dateFrom)
-    let yearDiff = dateDiff.getUTCFullYear()
+    let yearDiff = dateDiff.getUTCFullYear() - 1970
     let yearDiffLiteral = getYearLiteral(yearDiff)
 
 
-    if (yearDiff - 1970 <= 0) {
-        return "" + -dateDiff.getUTCMonth() + getMonthLiteral(dateDiff.getUTCMonth())
+    if (yearDiff <= 0) {
+        return "" + dateDiff.getUTCMonth() + getMonthLiteral(dateDiff.getUTCMonth())
     } else {
-        return "" + (dateDiff.getUTCFullYear() - 1970) + yearDiffLiteral + dateDiff.getUTCMonth() + getMonthLiteral(dateDiff.getUTCMonth())
+        return "" + yearDiff + yearDiffLiteral + dateDiff.getUTCMonth() + getMonthLiteral(dateDiff.getUTCMonth())
     }
 }
 
 function getYearLiteral(yearDifference) {
-    if (yearDifference - 1970 === 1) {
+    if (yearDifference === 1) {
         return " год "
-    } else if (yearDifference - 1970 > 1 && yearDifference < 4) {
+    } else if (yearDifference > 1 && yearDifference < 4) {
         return " года "
     } else {
         return " лет "
