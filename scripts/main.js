@@ -158,7 +158,7 @@ function formatJobInfo(jobData) {
             text: jobData.pitch, italics: true
         },
         {
-            text: 'c ' + jobData.from + ' по ' + jobData.to + ' (' + calculateDifferenceOfDateToNow(jobData.dateFrom) + ') \n',
+            text: 'c ' + jobData.from + ' по ' + jobData.to + ' (' + calculateDifferenceOfDateToNow(jobData.dateFrom, jobData.dateTo) + ') \n',
             style: STYLENAMES.SMALL_GRAY
         },
         {
@@ -204,16 +204,16 @@ function openPDF() {
 }
 
 
-function calculateDifferenceOfDateToNow(date) {
-    let dateDiff = new Date(Date.now() - date)
+function calculateDifferenceOfDateToNow(dateFrom, dateTo) {
+    let dateDiff = new Date(dateTo - dateFrom)
     let yearDiff = dateDiff.getUTCFullYear()
     let yearDiffLiteral = getYearLiteral(yearDiff)
 
 
     if (yearDiff - 1970 <= 0) {
-        return dateDiff.getUTCMonth() + " месяцев"
+        return "" + -dateDiff.getUTCMonth() + getMonthLiteral(dateDiff.getUTCMonth())
     } else {
-        return (dateDiff.getUTCFullYear() - 1970) + yearDiffLiteral + dateDiff.getUTCMonth() + " месяцев"
+        return "" + (dateDiff.getUTCFullYear() - 1970) + yearDiffLiteral + dateDiff.getUTCMonth() + getMonthLiteral(dateDiff.getUTCMonth())
     }
 }
 
@@ -224,5 +224,15 @@ function getYearLiteral(yearDifference) {
         return " года "
     } else {
         return " лет "
+    }
+}
+
+function getMonthLiteral(monthDifference) {
+    if (monthDifference === 1) {
+        return " месяц"
+    } else if (monthDifference > 1 && monthDifference < 4) {
+        return " месяца"
+    } else {
+        return " месяцев"
     }
 }
