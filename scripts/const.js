@@ -37,9 +37,9 @@ const cvData = {
         {
             asDeveloper: true,
             from: "декабря 2019",
+            dateFrom: new Date(2019, 12, 12),
             to: "текущее время",
-            //todo dynamic
-            duration: "6 месяцев",
+            duration: calculateDifferenceOfDateToNow(this.dateFrom),
             position: "Backend-разработчик",
             companyName: "ООО Кометрика",
             companySite: "https://cometrica.ru/",
@@ -76,7 +76,7 @@ const cvData = {
     ],
     hobbiesAndSport: [
         "Хобби у меня достаточно много, основные поедающие время и деньги сейчас – это сноуборд и страйкбол.\n",
-        "Ещё люблю собирать мини-коллекции и в этом году удалось посетить 3 разных страны. \n",
+        "Ещё люблю собирать мини-коллекции и в 2019 году удалось посетить 3 разных страны. \n",
         "Нравится заниматься спортом - фитнес и плавание, умею играть в настольный теннис и футбол (и чуточку во все остальные спортивные игры)."
     ],
     aboutMe: [
@@ -114,7 +114,7 @@ const cvData = {
 
 const metaPdfContent = [
     {
-        text: cvData.name+ ' ' + cvData.surname,
+        text: cvData.name + ' ' + cvData.surname,
         style: STYLENAMES.HEADER
     },
     {
@@ -163,4 +163,14 @@ const pdfStyles = {
         margin: [0, 20, 0, 10]
     }
 
+}
+
+function calculateDifferenceOfDateToNow(date) {
+    let diff = (Date.now() - date)
+    //todo добавить лет
+    if (diff.getUTCFullYear() - 1970 <= 0) {
+        return diff.getUTCMonth() + " месяцев"
+    } else {
+        return (diff.getUTCFullYear() - 1970) + " года " + diff.getUTCMonth() + " месяцев"
+    }
 }
