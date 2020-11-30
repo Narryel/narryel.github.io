@@ -17,7 +17,7 @@ const cvData = {
     currentCityRus: 'Москва',
     phoneNum: '+7-912-237-00-27',
     mainEmail: 'narryel@gmail.com',
-    site: 'CV: https://narryel.github.io',
+    site: 'https://narryel.github.io',
     github: 'https://github.com/Narryel',
     profession: "Java developer",
     offspec: "Kotlin developer",
