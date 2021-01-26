@@ -12,7 +12,7 @@ const cvData = {
     secondName: "Олегович",
     credentials: "Афанасьев В.",
     birthDay: "14-12-1992",
-    age: 27,
+    age: 28,
     currentCity: 'Moscow',
     currentCityRus: 'Москва',
     phoneNum: '+7-912-237-00-27',
