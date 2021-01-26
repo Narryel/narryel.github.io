@@ -43,7 +43,7 @@ const cvData = {
             position: "Backend-разработчик",
             companyName: "ООО Кометрика",
             companySite: "https://cometrica.ru/",
-            pitch: "Продуктовая и заказная разработка проектов на основе блокчейн",
+            pitch: "Продуктовая разработка на основе блокчейн (HLF). Заказная разработка enterprise-решения для крупных заказчиков.",
             stack: ["Java 11", "Kotlin", "Spring", "Spring Boot", "Postgresql", "Docker", "RabbitMQ", "Hyperledger Fabric", "jUnit5/Mockito"],
             responsibilities: ["new feature developing", "refactoring", "code review", "mentoring"]
         },
@@ -125,7 +125,8 @@ const metaPdfContent = [
     },
     cvData.age + ' лет',
     cvData.currentCity,
-    cvData.phoneNum,
+    // TODO может обратно добавлю
+    // cvData.phoneNum,
     cvData.mainEmail,
     cvData.site,
     cvData.github
