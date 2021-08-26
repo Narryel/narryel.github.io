@@ -36,15 +36,28 @@ const cvData = {
     jobs: [
         {
             asDeveloper: true,
-            from: "декабря 2019",
-            dateFrom: new Date(2019, 11, 12),
+            from: "мая 2021",
+            dateFrom: new Date(2021, 5, 14),
             to: "текущее время",
             dateTo: Date.now(),
+            position: "Backend-разработчик",
+            companyName: "АО Тинькофф Банк",
+            companySite: "https://tinkoff.ru/",
+            pitch: "Разработка банковского процесса",
+            stack: ["Kotlin", "Spring", "Spring Boot", "Postgresql", "Oracle", "Kubernetes", "Docker", "Kafka"],
+            responsibilities: ["new feature developing", "refactoring", "code review"]
+        },
+        {
+            asDeveloper: true,
+            from: "декабря 2019",
+            dateFrom: new Date(2019, 11, 12),
+            to: "май 2021",
+            dateTo: new Date(2021, 5, 12),
             position: "Backend-разработчик",
             companyName: "ООО Кометрика",
             companySite: "https://cometrica.ru/",
             pitch: "Продуктовая разработка на основе блокчейн (HLF). Заказная разработка enterprise-решения для крупных заказчиков.",
-            stack: ["Java 11", "Kotlin", "Spring", "Spring Boot", "Postgresql", "Docker", "RabbitMQ", "Hyperledger Fabric", "jUnit5/Mockito"],
+            stack: ["Java 11", "Kotlin", "Spring", "Spring Boot", "Postgresql", "Docker", "Kubernetes", "RabbitMQ", "Hyperledger Fabric", "jUnit5/Mockito"],
             responsibilities: ["new feature developing", "refactoring", "code review", "mentoring"]
         },
         {
