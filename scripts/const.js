@@ -44,7 +44,7 @@ const cvData = {
             position: "Backend-разработчик",
             companyName: "АО Тинькофф Банк",
             companySite: "https://tinkoff.ru/",
-            pitch: "Разработка банковского процесса",
+            pitch: "Разработка микросервисов для обеспечения работы банковского процесса",
             stack: ["Kotlin", "Spring", "Spring Boot", "Postgresql", "Oracle", "Kubernetes", "Docker", "Kafka"],
             responsibilities: ["new feature developing", "refactoring", "code review"]
         },
