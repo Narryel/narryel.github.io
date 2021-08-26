@@ -12,6 +12,7 @@ const cvData = {
     secondName: "Олегович",
     credentials: "Афанасьев В.",
     birthDay: "14-12-1992",
+    // TODO dynamic
     age: 28,
     currentCity: 'Moscow',
     currentCityRus: 'Москва',
@@ -143,7 +144,6 @@ const metaPdfContent = [
     cvData.mainEmail,
     cvData.site,
     cvData.github
-
 ]
 
 
