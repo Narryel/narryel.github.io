@@ -12,8 +12,7 @@ const cvData = {
     secondName: "Олегович",
     credentials: "Афанасьев В.",
     birthDay: "14-12-1992",
-    // TODO dynamic
-    age: 28,
+    age: calculateAge(),
     currentCity: 'Moscow',
     currentCityRus: 'Москва',
     phoneNum: '+7-912-237-00-27',
@@ -121,12 +120,17 @@ const cvData = {
             text: " Прошел курсы по JVM-стеку: \"OTUS.RU - Разработчик Java\" и \"LUXOFT.COM - Spring Framework\". \n",
             italics: true
         },
-        " Позднее перешел в компанию Кометрика (г. Москва) в качестве backend-разработчика, где и работаю по текущий день"
+        " Позднее перешел в компанию Кометрика (г. Москва) в качестве backend-разработчика, и позднее в команду АО Тинькофф"
     ]
 
 
 }
 
+function calculateAge() {
+    let ageDifMs = Date.now() - new Date(1992, 11, 14);
+    let ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
 
 const metaPdfContent = [
     {
