@@ -14,6 +14,10 @@ var news = [
 
 function generateText(){
     var gos = document.getElementById('gosNews')
+
+    while (gos.lastElementChild) {
+       gos.removeChild(gos.lastElementChild);
+    }
     console.log('script')
     console.log(gos)
     var text = document.createTextNode("This just got added")
