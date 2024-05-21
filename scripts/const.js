@@ -141,7 +141,7 @@ const metaPdfContent = [
         text: cvData.multiSpec,
         style: STYLENAMES.SUBHEADER
     },
-    cvData.age + ' лет',
+    cvData.age + ' год',
     cvData.currentCity,
     // TODO может обратно добавлю
     // cvData.phoneNum,
