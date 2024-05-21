@@ -22,7 +22,7 @@ const cvData = {
     profession: "Java developer",
     offspec: "Kotlin developer",
     multiSpec: "Java & Kotlin developer",
-    grade: "middle",
+    grade: "middle +",
     education: [
         {
             text: "Бакалавриат:", bold: true
