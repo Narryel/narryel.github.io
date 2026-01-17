@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подсчет символов</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        input { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 20px; }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover { background: #0056b3; }
+        #output { background: #f0f0f0; padding: 15px; border-radius: 5px; min-height: 100px; }
+        .error { color: red; }
+        .ok { color: green; }
+        .limits { background: #e8f4f8; padding: 10px; border-radius: 3px; margin-top: 10px; font-family: monospace; }
+    </style>
+</head>
+<body>
+<h1>Подсчет и проверка символов</h1>
+<input type="text" id="inputField" placeholder="Введите текст для проверки..." maxlength="100">
+<br>
+<button onclick="showLimits()">Показать все лимиты</button>
+<div id="output">Введите текст для начала проверки.</div>
+<script src="script.js"></script>
+</body>
+</html>
