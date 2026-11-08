@@ -163,7 +163,15 @@ function renderEducation() {
         cvData.courses.forEach(function (course) {
             const li = el('li', 'course-item');
             li.append(el('span', 'course-provider', course.provider));
-            li.append(el('span', null, course.name));
+            if (course.url) {
+                const a = el('a', 'course-link', course.name);
+                a.href = course.url;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                li.append(a);
+            } else {
+                li.append(el('span', null, course.name));
+            }
             list.append(li);
         });
         wrap.append(list);
@@ -370,7 +378,10 @@ function fillEduContent(content) {
         })
         content.push({
             ul: cvData.courses.map(function (course) {
-                return course.provider + ' — ' + course.name
+                return {
+                    text: course.provider + ' — ' + course.name,
+                    link: course.url || undefined
+                }
             })
         })
     }

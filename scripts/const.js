@@ -35,11 +35,11 @@ const cvData = {
         " Уральский Федеральный Университет (УрФУ). Радиотехнический факультет. Инфокоммуникационные технологии. \n"
     ],
     courses: [
-        {provider: "OTUS", name: "Разработчик Java"},
-        {provider: "Luxoft", name: "Spring Framework"},
-        {provider: "Slurm", name: "Docker для админов и разработчиков, Эксперт"},
-        {provider: "Slurm", name: "Система управления базами данных: PostgreSQL"},
-        {provider: "Slurm", name: "Kubernetes: базовый уровень"}
+        {provider: "OTUS", name: "Разработчик Java", url: "https://otus.ru/lessons/java-specialization"},
+        {provider: "Luxoft", name: "Spring Framework", url: "https://training.luxoft.com"},
+        {provider: "Slurm", name: "Docker для админов и разработчиков, Эксперт", url: "https://slurm.io/docker"},
+        {provider: "Slurm", name: "Система управления базами данных: PostgreSQL", url: "https://slurm.io/course-postgresql"},
+        {provider: "Slurm", name: "Kubernetes: базовый уровень", url: "https://slurm.io/kubernetes-baza"}
     ],
     jobs: [
         {
