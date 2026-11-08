@@ -1,29 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Narryel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Валентин Афанасьев — Java & Kotlin backend-разработчик. Динамическое резюме: веб-версия и PDF с настраиваемым содержимым.">
+    <title>Валентин Афанасьев — Java &amp; Kotlin backend-разработчик</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
-<link rel="stylesheet" type="text/css" href="style.css">
 <body>
-<div>
 
-    <div>
-        <span style="display: block"> Привет! Меня зовут Афанасьев Валентин. </span>
-        <span style="display: block"> Я - Java/Kotlin-Developer </span>
+<header class="hero">
+    <div class="container hero-inner">
+        <div class="hero-text">
+            <div class="hero-hello">Привет! Меня зовут</div>
+            <h1 id="heroName" class="hero-name"></h1>
+            <div id="heroTitle" class="hero-title"></div>
+            <div id="heroMeta" class="hero-meta"></div>
+            <p id="heroTagline" class="hero-tagline"></p>
+            <div id="heroContacts" class="hero-contacts"></div>
+            <div class="hero-actions">
+                <button id="myBtn" class="btn btn-primary">Резюме в PDF</button>
+                <a href="faq/" class="btn btn-ghost">recruiter F.A.Q.</a>
+            </div>
+            <div id="heroStats" class="hero-stats"></div>
+        </div>
+        <div class="hero-photo">
+            <img id="heroAvatar" alt="Валентин Афанасьев" class="avatar">
+        </div>
     </div>
-    <div>
-        <!--        <img class="avatar" src="https://lh3.google.com/u/0/d/1CQGF1RBtrwxqYeH3WHYZ2GpV7uAxjhO_=w3360-h1740-iv1">-->
+</header>
+
+<main class="container page">
+    <section id="aboutSection"></section>
+    <section id="jobsSection"></section>
+    <section id="projectsSection"></section>
+    <section id="eduSection"></section>
+    <section id="bioSection"></section>
+    <section id="hobbySection"></section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div id="footerLinks" class="footer-links"></div>
+        <div class="footer-note">© <span id="footerYear"></span> · страница и PDF собраны из одного источника данных, без фреймворков</div>
     </div>
-</div>
-
-
-<!-- Trigger/Open The Modal -->
-<button id="myBtn"> Резюме в PDF </button>
-<a href="http://narryel.github.io/faq">
-    <button>recruiter F.A.Q.</button>
-</a>
+</footer>
 
 <!-- The Modal -->
 <div id="myModal" class="modal" style="display: none">
@@ -32,7 +57,7 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <p>Что включить в PDF?</p>
-        <ul class="">
+        <ul class="modal-options">
             <li><label><input type="checkbox" id="photoCb" checked><span>Фото</span></label></li>
             <li><label><input type="checkbox" id="eduCb" checked><span>Образование</span></label></li>
             <li>
@@ -42,31 +67,24 @@
                     <label style="display: block"><input type="radio" name="job" value="last"><span>Только последнее место работы</span></label>
                 </div>
             </li>
+            <li><label><input type="checkbox" id="projectsCb" checked><span>Проекты</span></label></li>
             <li><label><input type="checkbox" id="bioCb" checked><span>Биография</span></label></li>
             <li><label><input type="checkbox" id="hobbyAndSportCb" checked><span>Хобби</span></label></li>
             <li><label><input type="checkbox" id="pitchCb" checked><span>Обо мне</span></label></li>
         </ul>
-        <div>
-            <button id="generatePdfBtn" onclick=makePDF()>Сохранить</button>
-            <button id="openPdfBtn" onclick=openPDF()>Открыть в новом окне</button>
+        <div class="modal-actions">
+            <button id="generatePdfBtn" onclick="makePDF()" class="btn btn-primary">Сохранить</button>
+            <button id="openPdfBtn" onclick="openPDF()" class="btn btn-ghost">Открыть в новом окне</button>
         </div>
     </div>
 </div>
 
-
-</body>
-<!--jsPDF-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
-        integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
-        crossorigin="anonymous"></script>
 <!--PDF make-->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/pdfmake.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/vfs_fonts.js'></script>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="scripts/const.js"></script>
 <script src="scripts/base64.js"></script>
 <script src="scripts/main.js"></script>
+</body>
 </html>
-
-<!--http://preview.themeforest.net/item/desmond-resume-cv-html-template/full_screen_preview/15956797?_ga=2.53216044.588136194.1587925951-1221512389.1587925951-->
