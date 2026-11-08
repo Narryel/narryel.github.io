@@ -268,20 +268,6 @@ function renderHobbies() {
 }
 
 function renderFooter() {
-    const wrap = document.getElementById('footerLinks');
-    const links = [
-        {href: 'faq/', text: 'recruiter F.A.Q.'},
-        {href: 'q/', text: 'Мои вопросы работодателю'},
-        {href: 'embossing/', text: 'Проверка тиснения'},
-        {href: 'zika/', text: 'zika'},
-        {href: 'airsoft/', text: 'airsoft'}
-    ];
-    links.forEach(function (l, index) {
-        if (index > 0) wrap.append(el('span', 'footer-dot', '·'));
-        const a = el('a', 'footer-link', l.text);
-        a.href = l.href;
-        wrap.append(a);
-    });
     document.getElementById('footerYear').textContent = String(new Date().getFullYear());
 }
 
