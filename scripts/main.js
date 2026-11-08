@@ -44,10 +44,13 @@ function renderStats() {
     };
     const devYears = fullYearsBetween(cvData.devSince, Date.now());
     const bankYears = fullYearsBetween(cvData.jobs[0].dateFrom, Date.now());
+    const liveProjects = cvData.projects.filter(function (p) {
+        return !p.inProgress;
+    }).length;
     const stats = [
         {value: devYears + '+', label: 'лет в разработке'},
         {value: bankYears, label: 'лет в Т-Банке'},
-        {value: cvData.projects.length, label: 'своих проекта в проде'}
+        {value: liveProjects, label: 'своих проекта в проде'}
     ];
     stats.forEach(function (s) {
         const item = el('div', 'stat');
@@ -69,7 +72,7 @@ function renderAbout() {
     const wrap = document.getElementById('aboutSection');
     wrap.append(el('h2', 'section-title', 'Обо мне'));
     const p = el('p', 'section-text');
-    p.append(...renderRichText(cvData.aboutMe));
+    appendRichText(p, cvData.aboutMe);
     wrap.append(p);
 }
 
@@ -112,11 +115,21 @@ function renderProjects() {
     cvData.projects.forEach(function (project) {
         const card = el('div', 'project-card');
 
-        const name = el('a', 'project-name', project.name);
-        name.href = project.link;
-        name.target = '_blank';
-        name.rel = 'noopener';
-        card.append(name);
+        const nameRow = el('div', 'project-name-row');
+        let name;
+        if (project.link) {
+            name = el('a', 'project-name', project.name);
+            name.href = project.link;
+            name.target = '_blank';
+            name.rel = 'noopener';
+        } else {
+            name = el('span', 'project-name', project.name);
+        }
+        nameRow.append(name);
+        if (project.inProgress) {
+            nameRow.append(el('span', 'project-badge', 'в процессе разработки'));
+        }
+        card.append(nameRow);
 
         card.append(el('p', 'project-pitch', project.pitch));
 
@@ -143,6 +156,18 @@ function renderEducation() {
         }
     });
     wrap.append(p);
+
+    if (cvData.courses && cvData.courses.length) {
+        wrap.append(el('h3', 'subsection-title', 'Курсы'));
+        const list = el('ul', 'course-list');
+        cvData.courses.forEach(function (course) {
+            const li = el('li', 'course-item');
+            li.append(el('span', 'course-provider', course.provider));
+            li.append(el('span', null, course.name));
+            list.append(li);
+        });
+        wrap.append(list);
+    }
 }
 
 function renderBio() {
@@ -207,12 +232,29 @@ function renderRichText(parts) {
     return fragment.childNodes;
 }
 
+// Кусок текста: строка, {text, italics}, {text, link} или вложенный массив этих вариантов
+function appendRichText(parent, parts) {
+    (Array.isArray(parts) ? parts : [parts]).forEach(function (part) {
+        if (Array.isArray(part)) {
+            appendRichText(parent, part);
+        } else if (typeof part === 'string') {
+            parent.append(part.replace(/\n/g, ' '));
+        } else if (part.link) {
+            parent.append(renderBioLink(part));
+        } else {
+            parent.append(el('em', null, part.text));
+        }
+    });
+}
+
 function renderHobbies() {
     const wrap = document.getElementById('hobbySection');
     wrap.append(el('h2', 'section-title', 'Хобби и спорт'));
     const list = el('ul', 'hobby-list');
     cvData.hobbiesAndSport.forEach(function (hobby) {
-        list.append(el('li', 'hobby-item', hobby.replace(/\n/g, ' ').trim()));
+        const item = el('li', 'hobby-item');
+        appendRichText(item, hobby);
+        list.append(item);
     });
     wrap.append(list);
 }
@@ -319,6 +361,19 @@ function fillEduContent(content) {
             text: cvData.education
         }
     )
+
+    if (cvData.courses && cvData.courses.length) {
+        content.push({
+            text: 'Курсы',
+            style: STYLENAMES.H2,
+            margin: [0, 10, 0, 6]
+        })
+        content.push({
+            ul: cvData.courses.map(function (course) {
+                return course.provider + ' — ' + course.name
+            })
+        })
+    }
 }
 
 function fillJobsContent(content) {
@@ -373,7 +428,9 @@ function fillProjectsContent(content) {
     let projectsArray = cvData.projects.map(function (project) {
         return [
             {
-                text: project.name + ' — ' + project.link,
+                text: project.name +
+                    (project.link ? ' — ' + project.link : '') +
+                    (project.inProgress ? ' (в процессе разработки)' : ''),
                 style: STYLENAMES.H2
             },
             {
